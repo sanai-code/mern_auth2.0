@@ -6,17 +6,8 @@ import mongoose from "mongoose";
 import { connectDb } from "./config/mongodb.js";
 import { authRouter } from "./routes/authRoute.js";
 import { userRouter } from "./routes/userRoutes.js";
-// import multer from "multer";
 
-// const storage = multer.diskStorage({
-//     destination:function (req,file,cb){
-//        return cb(null,"./uploads")
-//     },
-//     filename:function (req,file,cb){
-//         return cb(null,`${Date.now()}-${file.originalname}`)
-//     }
-// })
-// const upload = multer({storage:storage})
+
 let app = express();
 let allowOrigins = 'http://localhost:5173'
 app.use(cors({origin:allowOrigins,credentials:true}))
@@ -33,14 +24,6 @@ app.get("/",(req,res)=>{
     })
 })
 app.use("/api/auth",authRouter)
-
-// app.post("/api/v1/upload", upload.single("image"), (req, res) => {
-//     console.log(req.file);
-//     res.json({
-//         msg:'hi'
-//     })
-// });
-
 app.use("/api/user",userRouter)
 
 
