@@ -23,6 +23,11 @@ app.get("/",(req,res)=>{
         msg:'helo'
     })
 })
+app.get("/helo",(req,res)=>{
+    res.json({
+        msg:'helo'
+    })
+})
 app.use("/api/auth",authRouter)
 app.use("/api/user",userRouter)
 
