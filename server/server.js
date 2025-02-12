@@ -9,7 +9,7 @@ import { userRouter } from "./routes/userRoutes.js";
 
 
 let app = express();
-let allowOrigins = 'http://localhost:5173'
+let allowOrigins = process.env.FRONTEND_URL
 app.use(cors({origin:allowOrigins,credentials:true}))
 app.use(express.json())
 app.use(cookieParser())
