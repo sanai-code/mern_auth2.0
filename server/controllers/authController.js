@@ -8,7 +8,6 @@ import { EMAIL_VERIFY_TEMPLATE } from "../config/emailTemplates.js";
 
 export const regisgter = async (req, res) => {
   const { name, email, password } = req.body;
-  console.log(req.file)
   if (!name || !email || !password) {
     return res.json({
       success: false,
@@ -31,7 +30,6 @@ export const regisgter = async (req, res) => {
       email,
       password: hashPassword,
     });
-    console.log(user);
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
@@ -87,7 +85,6 @@ export const login = async (req, res) => {
     let token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
-    console.log(process.env.NODE_ENV);
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -128,7 +125,6 @@ export const sendVerificationOtp = async (req, res) => {
   try {
     const userId = req.body.userId;
     let user = await userModel.findOne({ _id: userId });
-    console.log(user);
     if (user.isAccountVerified) {
       return res.json({
         success: false,
@@ -169,7 +165,6 @@ export const verifyOtp = async (req, res) => {
     });
   }
   try {
-    console.log(userId);
     const user = await userModel.findOne(
       {
         _id: userId,
@@ -177,7 +172,6 @@ export const verifyOtp = async (req, res) => {
       { password: 0 }
     );
 
-    console.log(user);
     if (!user) {
       return res.json({
         success: false,
@@ -287,7 +281,6 @@ export const resetPassword = async(req,res)=>{
     let reponsedb = await userModel.findOne({
       email
     })
-    console.log(reponsedb)
     if(!reponsedb){
       return res.json({
         message:false,
