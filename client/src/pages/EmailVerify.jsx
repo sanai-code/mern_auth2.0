@@ -7,7 +7,6 @@ import { ContextComp } from '../context/AppContext';
 const EmailVerify = () => {
   let {getData,backendUrl} = useContext(ContextComp)
   let inputRefs = useRef([]);
-  console.log(inputRefs)
   let navigate = useNavigate();
   function handleInput(e,ind){
     if(e.target.value.length > 0 && ind < inputRefs.current.length -1){

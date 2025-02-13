@@ -7,7 +7,6 @@ import axios from 'axios'
 import Login from '../pages/Login'
 const Navbar = () => {
   let {userData,setIsLoggedIn,setUserData} = useContext(ContextComp)
-  console.log(userData)
     const navigate = useNavigate()
     async function sendVerificationOtp() {
       try {
@@ -26,7 +25,6 @@ const Navbar = () => {
     async function  handlefilesubmit(e) {
       e.preventDefault();
       let response = await axios.post('http://localhost:8000/api/v1/upload')
-      console.log(response)
     }
   
   return (

@@ -12,7 +12,7 @@ export const ProviderComp = (props)=>{
     let [userData,setUserData] = useState(false)
     async function getAuthStatus() {
         try {
-            let {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/is-auth`)
+            let {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}api/auth/is-auth`)
             if(data.success){
                setIsLoggedIn(true);
                getData();
@@ -26,9 +26,9 @@ export const ProviderComp = (props)=>{
     useEffect(()=>{
         getAuthStatus();
     },[])
-    async function  getData(params) {
+    async function getData() {
         try {
-            let {data} = await axios.get(`${backendUrl}/api/user/get-details`)
+            let {data} = await axios.get(`${backendUrl}/api/user/get-details`,{ withCredentials: true })
             data.success?setUserData(data.userData):toast.error(data.message)
             
         } catch (error) {

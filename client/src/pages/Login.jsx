@@ -13,7 +13,6 @@ import { toast } from "react-toastify";const Login = () => {
     password: "",
   });
   function handleChange(e) {
-    console.log(e.target.name);
     let name = e.target.name;
     let targetVal = e.target.value;
     setName({ ...prev, [name]: targetVal });
@@ -21,7 +20,6 @@ import { toast } from "react-toastify";const Login = () => {
   async function handleSubmit(e) {
     try {
       e.preventDefault();
-      console.log("prev", prev);
       axios.defaults.withCredentials = true;
       if (state === "Sign Up") {
         let { data } = await axios.post(
@@ -46,7 +44,7 @@ import { toast } from "react-toastify";const Login = () => {
           // navigate("/home");
         } else {
           // toast.error(data.message);
-          console.log(data)
+          return null
         }
       }
     } catch (error) {
