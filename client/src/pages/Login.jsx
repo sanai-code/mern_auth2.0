@@ -33,7 +33,7 @@ import { toast } from "react-toastify";const Login = () => {
           // navigate("/home")
           
         } else {
-          toast.error(data.message);
+          toast.error(data.msg);
         }
       } else {
         let { data } = await axios.post(`${backendUrl}/api/auth/login`, prev);
@@ -41,9 +41,7 @@ import { toast } from "react-toastify";const Login = () => {
           toast.success('login successfull')
           setIsLoggedIn(true);
           getData()
-          // navigate("/home");
         } else {
-          // toast.error(data.message);
           return null
         }
       }
