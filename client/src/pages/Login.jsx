@@ -105,7 +105,7 @@ import { toast } from "react-toastify";const Login = () => {
           >
             Forget password
           </p>
-          <button className="rounded-full w-full  py-3 bg-blue-400">
+          <button className="rounded-full w-full  py-3 bg-blue-400 cursor-pointer">
             {state}
           </button>
         </form>
